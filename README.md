@@ -99,6 +99,8 @@ Contributions are welcome! If you find a bug or have a suggestion, feel free to 
 
 ## 👨‍💻 Developed by
 
-Angel Duarte
-Jocelyn Arroyo
-Paulina Garcia
+### Angel Duarte
+
+### Jocelyn Arroyo
+
+### Paulina Garcia
