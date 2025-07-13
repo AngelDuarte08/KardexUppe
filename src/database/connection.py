@@ -13,9 +13,11 @@ class Model():
         self.__confirmation = confirmation
     
     def command(self):
-        self.__cursor.execute(self.__query, self.__values, self.__confirmation)
-        if self.__confirmation == 1: 
-            self.__connection.commit()
-        result = self.__cursor.fetchall()
-        self.__connection.close()
-        return result
+        try:
+            self.__cursor.execute(self.__query, self.__values)
+            if self.__confirmation == 1:
+                self.__connection.commit()
+            result = self.__cursor.fetchall()
+            return result
+        finally:
+            self.__connection.close()

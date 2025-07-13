@@ -29,7 +29,7 @@
           <h2 class="titulo-login">Inicio de sesión</h2>
         </div>
 
-        <form>
+        <form method="POST" action="{{ url_for('auth_bp.login') }}">
           <label for="email">Usuario</label>
           <input
             type="email"
@@ -54,8 +54,8 @@
           </div>
 
           <button type="submit">Acceder</button>
-          <button type="button">Calendario escolar</button>
         </form>
+        <button type="button">Calendario escolar</button>
       </div>
     </div>
 
