@@ -29,7 +29,11 @@
           <h2 class="titulo-login">Inicio de sesión</h2>
         </div>
 
-        <form method="POST" action="{{ url_for('auth_bp.login') }}">
+        {% if error %}
+        <div class="error-message">{{ error }}</div>
+        {% endif %}
+
+        <form method="POST" action="{{url_for('auth_bp.auth')}}">
           <label for="email">Usuario</label>
           <input
             type="email"

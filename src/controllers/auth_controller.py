@@ -1,40 +1,73 @@
-from flask import Blueprint, render_template, request, redirect, url_for, flash, session
+#Flask
+from flask import Blueprint, render_template, request, session, url_for, redirect
+
+#Models
 from Models.Student import Student
 from Models.Administrators import Administrators
 
-auth_bp = Blueprint('auth_bp', __name__, template_folder='../Templates/auth')
 
-@auth_bp.route('/', methods=['GET', 'POST'])
-def login():
-    if request.method == 'POST':
-        email = request.form['email']
-        pssword = request.form['password']
+auth_bp = Blueprint('auth_bp', __name__)
+#Login
+@auth_bp.route("/")
+def index():
 
-        student = Student()
-        result = student.auth(email)
+    session["user"] = ""
+    session["id_user"] = ""
 
-        if not result:
-            admin = Administrators()
-            result = admin.auth(email)
-            # row = result[0]
-            dbEmail = result[0]
-            dbPssword = result[1]
-            dbRol = result[2]
+    return render_template("auth/index.html")
 
-            if dbEmail == email and dbPssword == pssword:
-                if dbRol == "Administrador":
-                        return redirect(url_for('admin_bp.dashboard'))
-                elif dbRol == "Docente": 
-                    return redirect(url_for('teachers_bp.panel'))
-            else:
-                flash('Correo o contraseña incorrectos', 'danger')
+@auth_bp.route("/index.html", methods=['POST'])
+def auth(): 
+    userLogin = request.form['email']
+    psswdLogin = request.form['password']
+
+    student = Student()
+    resultDB = student.auth(userLogin, psswdLogin)
+
+
+
+    if not resultDB: 
+        administrators = Administrators()
+        resultDB = administrators.auth(userLogin, psswdLogin)
+        if  not resultDB:
+            errorMsg = "Usuario no encontrado"
+            return render_template("auth/index.html", error = errorMsg)
         else:
-            row = result[0]
-            dbEmail = row[0]
-            dbPssword = row[1] 
-            if dbEmail == email and dbPssword == pssword:
-                return redirect(url_for('teacher_bp.panel'))  
-            else:
-                flash('Correo o contraseña incorrectos', 'danger')
+            dataDB = resultDB[0]
 
-    return render_template('auth/index.html')
+            idDB = dataDB[0]
+            userDB = dataDB[1]
+            psswdDB = dataDB[2]
+            rolDB = dataDB[3]
+            
+            if userLogin == userDB and psswdLogin == psswdDB:
+                if rolDB == "Administrador":
+                    session["user"] = userDB
+                    session["id_user"] = idDB
+                    return redirect(url_for("admin_bp.inicio"))
+                
+                elif rolDB == "Docente":
+                    session["user"] = userDB
+                    session["id_user"] = idDB
+                    return redirect(url_for("teacher_bp.inicio"))
+                
+            else: 
+                errorMsg = "Usuario o contraseña incorrectos"
+                return render_template("auth/index.html", error = errorMsg)
+                
+
+    else:
+        dataDB = resultDB[0]
+
+        idDB = dataDB[0]
+        userDB = dataDB[1]
+        psswdDB = dataDB[2]
+
+        session["user"] = userDB
+        session["id_user"] = idDB
+        
+        if userLogin == userDB and psswdLogin == psswdDB:
+            return redirect(url_for("student_bp.inicio"))
+        else: 
+            errorMsg = "Usuario o contraseña incorrectos"
+            return render_template("auth/index.html", error = errorMsg)

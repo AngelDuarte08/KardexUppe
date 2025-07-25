@@ -127,3 +127,15 @@ button {
 button:hover {
   background-color: #1f2a40;
 }
+
+.error-message {
+  color: #c0392b;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  padding: 10px 15px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  text-align: center;
+  font-weight: bold;
+}
+
