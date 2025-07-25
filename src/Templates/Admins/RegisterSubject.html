@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Registar materias</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/Register.css') }}"
+    />
+  </head>
+  <body>
+    <header class="main-header">
+      <div class="header-content">
+        <span class="titulo-principal">KardexUPPE</span>
+        <img
+          src="{{ url_for('static', filename='Image/Logo_Blanco.png') }}"
+          alt="logo UPPE"
+          class="escudo"
+        />
+      </div>
+    </header>
+
+    <main class="main-body">
+      <nav class="menu-lateral">
+        <h2 class="menu-title">Menu</h2>
+        <ul>
+          <li><a href="/Inicio_administrador" target="_blank">Inicio</a></li>
+          <li><a href="" target="_blank">Registar alumnos</a></li>
+          <li><a href="" target="_blank">Registar empleados</a></li>
+          <li class="activo">
+            <a href="" target="_blank">Registar materias</a>
+          </li>
+          <li><a href="" target="_blank">Cerrar sesión</a></li>
+        </ul>
+      </nav>
+
+      <section class="contenido">
+        <div class="credencial-card">
+          <div class="header">
+            <div class="title">
+              <h1 class="profile-title">Registar materias</h1>
+              <img
+                src="{{ url_for('static', filename='Image/Correcaminos_azul.png') }}"
+                alt="logo"
+                class="roadrunner"
+              />
+              <p class="subtitle">Universidad Politécnica de Pénjamo</p>
+            </div>
+          </div>
+
+          <div class="profile">
+            <div class="inputs">
+              <h3>Infomarción materia</h3>
+              <div class="info">
+                <div class="input-group">
+                  <input
+                    required=""
+                    type="text"
+                    name="text"
+                    autocomplete="off"
+                    class="input-info"
+                    id="name"
+                  />
+                  <label class="label-info">Nombre</label>
+                </div>
+                <div class="input-group">
+                  <input
+                    required=""
+                    type="text"
+                    name="text"
+                    autocomplete="off"
+                    class="input-info"
+                    id="code"
+                  />
+                  <label class="label-info">Codigo del curso</label>
+                </div>
+                <div class="input-group">
+                  <input
+                    required=""
+                    type="text"
+                    name="text"
+                    autocomplete="off"
+                    class="input-info"
+                    id="credits"
+                  />
+                  <label class="label-info">Numero de creditos</label>
+                </div>
+                <div class="input-group">
+                  <input
+                    required=""
+                    type="text"
+                    name="text"
+                    autocomplete="off"
+                    class="input-info"
+                    id="hours"
+                  />
+                  <label class="label-info">Numero de horas</label>
+                </div>
+                <div class="vacio">Espacio</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="btnBottom">
+            <button class="btnContinue">Continuar</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

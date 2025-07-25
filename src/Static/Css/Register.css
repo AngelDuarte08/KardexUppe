@@ -1,0 +1,355 @@
+@font-face {
+  font-family: 'Rubik';
+  src: url('../Fonts/Rubik/Rubik-Bold.ttf');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Rubik';
+  src: url('../Fonts/Rubik/Rubik-Regular.ttf');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face{
+  font-family: 'Rubik';
+  src: url('/Font/Rubik/Rubik-Medium.ttf');
+  font-weight: 500;
+  font-style: normal;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f4f6fc; /* el fondo general */
+}
+
+/* top */
+.main-header {
+  background: #151e2d;
+  color: #fff;
+  padding: 0 0 0 30px;
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-bottom: 5px solid #405a8a;
+  font-size: 40px ;
+  font-weight: 700;
+  font-family: 'Rubik';
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.escudo {
+  height: 70px;
+  margin-right: 40px;
+}
+
+/* Menu */
+.main-body {
+  font-family: 'Rubik';
+  font-weight: 400;
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 100%;
+}
+
+.menu-lateral {
+  width: 280px;
+  min-width: 0px;
+  background: #ffffff;
+  border: 2px solid #b7c4d6;
+  padding: 20px;
+  box-sizing: border-box;
+  height: 40%;
+  border-radius: 14px;
+  margin-left: 20px;
+  margin-top: 50px;
+}
+
+
+/* Information */
+
+.contenido {
+    flex: 1;
+    padding: 30px;
+    background: #f4f6fc;
+    overflow-y: auto;
+    height: 100%;
+    font-weight: 400;
+}
+
+.profile {
+    display: flex;
+    font-weight: 400;
+    font-family: 'Rubik';
+    font-size: medium;
+    background-color: #ffffff;
+    border-radius: 10px;
+    height: 50%;
+    border: 2px solid #b7c4d6;
+}
+
+.roadrunner{
+  height: 70px;
+}
+
+.subtitle{
+  width: 300px;
+}
+
+.activo{
+    font-size: 18px;
+    text-decoration: underline;
+}
+
+ul {
+  gap: 20px;
+  list-style: none;
+  padding: 24px;
+  margin: 0;
+}
+
+li a {
+  text-decoration: none;
+  color: #151e2d;
+  font-weight: bold;
+  line-height: 1.6;
+}
+
+.menu-title{
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 24px;
+  color: #405a8a;
+  font-weight: 700;
+  font-family: 'Rubik';
+}
+
+.profile-title{
+  width: 100%;
+  margin-top: 20px;
+  font-size: 24px;
+  color: #405a8a;
+  font-weight: 700;
+  font-family: 'Rubik';
+}
+
+.title{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 400;
+  font-family: 'Rubik';
+}
+
+
+.inputs{
+    margin-left: 30px;
+}
+
+.info{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.adress{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.user-info{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* From Uiverse.io by alexruix */ 
+.input-group {
+  flex: 1 1 48%;
+  position: relative;
+}
+
+.input-info {
+    border: solid 1.5px #151e2d;
+    border-radius: 10px;
+    background: none;
+    padding: 1rem;
+    font-size: 1rem;
+    color: #151e2d;
+    transition: border 150ms cubic-bezier(0.4,0,0.2,1);
+    width: 90%;
+}
+.input-info::placeholder{
+    color: transparent;
+    transition: color 0.3s ease;
+}
+
+.input:focus::placeholder{
+    color: #405a8a;
+}
+
+.label-info {
+    position: absolute;
+    left: 15px;
+    color: #1f2a40;
+    pointer-events: none;
+    transform: translateY(1rem);
+    transition: 150ms cubic-bezier(0.4,0,0.2,1);
+}
+
+.input-info:focus, input:valid {
+    outline: none;
+    border: 1.5px solid #151e2d;
+}
+
+.input-info:focus ~ label, input:valid ~ label {
+    transform: translateY(-50%) scale(0.8);
+    background-color: #fff;
+    padding: 0 .2em;
+    color: #151e2d;
+}
+
+/* input whit btn */
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    height: 45px;
+    border-radius: 20px;
+    background-color: transparent; /* opcional, el input tiene fondo blanco */
+    padding: 5px;
+    box-sizing: content-box;
+    gap: 10px;
+    margin-bottom: 12px;
+    margin-top: 0;
+}
+
+.input {
+    flex: none;
+    height: 100%;
+    width: 300px;
+    padding-left: 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: white;  
+    color: #151e2d;            
+    font-family: 'Rubik', sans-serif;
+    font-size: 15px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.input::placeholder {
+    color: #888; /* placeholder un poco gris */
+}
+
+.input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+    -webkit-text-fill-color: #151e2d;
+}
+
+.btnGenerate {
+    height: 100%;
+    width: 160px;
+    border: none;
+    border-radius: 15px;
+    background-color: #151e2d;  /* botón azul oscuro */
+    color: white;               /* texto blanco */
+    font-weight: 400;
+    cursor: pointer;
+    font-family: 'Rubik', sans-serif;
+    font-size: 1rem;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    transition: background-color 0.3s, transform 0.15s;
+}
+
+.btnGenerate:hover {
+    background-color: #1f2a40; /* un azul un poco más claro para hover */
+}
+
+.btnGenerate:active {
+    transform: scale(0.95);
+}
+
+label {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    color: #151e2d;
+    margin-right: 10px;
+    display: inline-block;
+    margin-bottom: 7px;
+}
+
+select {
+    height: 42px;
+    padding: 0 16px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background: #fff;
+    color: #151e2d;
+    font-family: 'Rubik', sans-serif;
+    font-size: 15px;
+    transition: border 0.23s, box-shadow 0.23s;
+    outline: none;
+    appearance: none; /* quita la flecha predeterminada en la mayoría de navegadores */
+    box-shadow: 0 2px 8px rgba(20, 59, 107, 0.04);
+    min-width: 140px;
+}
+
+select:focus {
+    border-color: #151e2d;
+    box-shadow: 0 0 0 2px #c2d3ee;
+}
+
+/* last button */
+.btnBottom{
+    display: flex;
+    justify-content: right;
+}
+.btnContinue {
+  margin-top: 20px;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background-color: #151e2d;
+  color: white;
+  cursor: pointer;
+  font-family: 'Rubik';
+  font-weight: 400;
+  font-size: 17px;
+  width: 200px;
+  height: 40px;
+  }
+
+.btnContinue:hover {
+  background-color: #1f2a40;
+}
+
+.vacio{
+  color: #ffffff;
+}

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Credencial Digital UPPE</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/Register.css') }}"
+    />
+  </head>
+  <body>
+    <header class="main-header">
+      <div class="header-content">
+        <span class="titulo-principal">KardexUPPE</span>
+        <img
+          src="{{ url_for('static', filename='Image/Logo_Blanco.png') }}"
+          alt="logo UPPE"
+          class="escudo"
+        />
+      </div>
+    </header>
+
+    <main class="main-body">
+      <nav class="menu-lateral">
+        <h2 class="menu-title">Menu</h2>
+        <ul>
+          <li><a href="" target="_blank">Inicio</a></li>
+          <li class="activo">
+            <a href="" target="_blank">Registar alumnos</a>
+          </li>
+          <li><a href="" target="_blank">Registar empleados</a></li>
+          <li><a href="" target="_blank">Registar materias</a></li>
+          <li><a href="" target="_blank">Cerrar sesión</a></li>
+        </ul>
+      </nav>
+
+      <section class="contenido">
+        <div class="credencial-card">
+          <div class="header">
+            <div class="title">
+              <h1 class="profile-title">Registar alumno</h1>
+              <img
+                src="{{ url_for('static', filename='Image/Correcaminos_azul.png') }}"
+                alt="logo"
+                class="roadrunner"
+              />
+              <p class="subtitle">Universidad Politécnica de Pénjamo</p>
+            </div>
+          </div>
+
+          <div class="profile">
+            <div class="inputs">
+              <h3>Infomarción personal</h3>
+              <div class="info">
+                <div class="input-group">
+                  <input
+                    required=""
+                    type="text"
+                    name="text"
+                    autocomplete="off"
+                    class="input-info"
+                    id="names"
+                  />
+                  <label class="label-info">Nombres</label>
+                </div>
+                <div class="input-group">
+                  <input
+                    required=""
+                    type="text"
+                    name="text"
+                    autocomplete="off"
+                    class="input-info"
+                    id="lastname1"
+                  />
+                  <label class="label-info">Primer apellido</label>
+                </div>
+                <div class="input-group">
+                  <input
+                    required=""
+                    type="text"
+                    name="text"
+                    autocomplete="off"
+                    class="input-info"
+                    id="lastname2"
+                  />
+                  <label class="label-info">Segundo apellido</label>
+                </div>
+                <div class="input-group">
+                  <input
+                    required=""
+                    type="text"
+                    name="text"
+                    autocomplete="off"
+                    class="input-info"
+                    id="curp"
+                  />
+                  <label class="label-info">CURP</label>
+                </div>
+                <div class="input-group">
+                  <input
+                    required=""
+                    type="text"
+                    name="text"
+                    autocomplete="off"
+                    class="input-info"
+                    id="tel"
+                  />
+                  <label class="label-info">Telefono</label>
+                </div>
+            </div>
+
+              <h3>Dirección</h3>
+              <div class="adress">
+                <div class="input-group">
+                  <input
+                    required=""
+                    type="text"
+                    name="text"
+                    autocomplete="off"
+                    class="input-info"
+                    id="street"
+                  />
+                  <label class="label-info">Calle</label>
+                </div>
+                <div class="input-group">
+                  <input
+                    required=""
+                    type="text"
+                    name="text"
+                    autocomplete="off"
+                    class="input-info"
+                    id="number"
+                  />
+                  <label class="label-info">Numero</label>
+                </div>
+                <div class="input-group">
+                  <input
+                    required=""
+                    type="text"
+                    name="text"
+                    autocomplete="off"
+                    class="input-info"
+                    id="zipCode"
+                  />
+                  <label class="label-info">Codigo postal</label>
+                </div>
+                <div class="input-group">
+                  <input
+                    required=""
+                    type="text"
+                    name="text"
+                    autocomplete="off"
+                    class="input-info"
+                    id="coliny"
+                  />
+                  <label class="label-info">Colonia</label>
+                </div>
+                <div class="input-group">
+                  <input
+                    required=""
+                    type="text"
+                    name="text"
+                    autocomplete="off"
+                    class="input-info"
+                    id="city"
+                  />
+                  <label class="label-info">Ciudad</label>
+                </div>
+                <div class="input-group">
+                  <input
+                    required=""
+                    type="text"
+                    name="text"
+                    autocomplete="off"
+                    class="input-info"
+                    id="state"
+                  />
+                  <label class="label-info">Estado</label>
+                </div>
+                <div class="input-group">
+                  <input
+                    required=""
+                    type="text"
+                    name="text"
+                    autocomplete="off"
+                    class="input-info"
+                    id="country"
+                  />
+                  <label class="label-info">País</label>
+                </div>
+              </div>
+
+              <h3>Usuario UPP</h3>
+              <div class="user-info">
+                <div class="input-group">
+                  <input
+                    required=""
+                    type="text"
+                    name="text"
+                    autocomplete="off"
+                    class="input-info"
+                    id="quarter"
+                  />
+                  <label class="label-info">Cuatrimestre</label>
+                </div>
+                <div class="input-group">
+                  <input
+                    required=""
+                    type="text"
+                    name="text"
+                    autocomplete="off"
+                    class="input-info"
+                    id="group"
+                  />
+                  <label class="label-info">Grupo</label>
+                </div>
+                <div class="input-wrapper">
+                  <input
+                    placeholder="Genere un correo electronico"
+                    class="input"
+                    name="text"
+                    type="text"
+                  />
+                  <button class="btnGenerate">Generar correo</button>
+                </div>
+                <div class="input-wrapper">
+                  <input
+                    placeholder="Genere la contraseña"
+                    class="input"
+                    name="text"
+                    type="text"
+                  />
+                  <button class="btnGenerate">Generar contraseña</button>
+                </div class="input-group">
+                  <label for="role">Carrera: </label>
+                  <select name="role" id="role">
+                    <option value="LAGE">
+                      Licenciatura en Administración y Gestión Empresarial
+                    </option>
+                    <option value="LA">Licenciatura en Administración</option>
+                    <option value="LIL">
+                      Licenciatura en Ingeniería en Logística
+                    </option>
+                    <option value="LITIID">
+                      Licenciatura en Ingeniería en Tecnologías de la Información
+                      e Innovación Digital
+                    </option>
+                    <option value="LIA">
+                      Licenciatura en Ingeniería en Alimentos (Agroindustria)
+                    </option>
+                    <option value="LIB">
+                      Licenciatura en Ingeniería en Biotecnología
+                    </option>
+                    <option value="LII">
+                      Licenciatura en Ingeniería Industrial
+                    </option>
+                    <option value="LIM">
+                      Licenciatura en Ingeniería Mecatrónica
+                    </option>
+                    <option value="LIAU">
+                      Licenciatura en Ingeniería Automotriz
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+          <div class="btnBottom">
+            <button class="btnContinue">Continuar</button>
+          </div>
+        </div>
+        </div>
+        
+      </section>
+    </main>
+  </body>
+</html>

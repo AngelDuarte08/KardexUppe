@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Credencial Digital UPPE</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/Start.css') }}"
+    />
+  </head>
+  <body>
+    <header class="main-header">
+      <div class="header-content">
+        <span class="titulo-principal">KardexUPPE</span>
+        <img
+          src="{{ url_for('static', filename='Image/Logo_Blanco.png') }}"
+          alt="logo UPPE"
+          class="escudo"
+        />
+      </div>
+    </header>
+
+    <main class="main-body">
+      <nav class="menu-lateral">
+        <h2 class="menu-title">Menu</h2>
+        <ul>
+          <li class="activo"><a href="" target="_blank">Inicio</a></li>
+          <li><a href="" target="_blank">Registar Calificaciones</a></li>
+          <li><a href="" target="_blank">Cerrar sesión</a></li>
+        </ul>
+      </nav>
+
+      <section class="contenido">
+        <div class="credencial-card">
+          <div class="header">
+            <div class="title">
+              <h1 class="profile-title">Credencial Escolar</h1>
+              <img
+                src="{{ url_for('static', filename='Image/Correcaminos_azul.png') }}"
+                alt="logo"
+                class="roadrunner"
+              />
+              <p class="subtitle">Universidad Politécnica de Pénjamo</p>
+            </div>
+          </div>
+
+          <div class="profile">
+            <div class="lFoto">
+              <img
+                src="{{ url_for('static', filename='Image/Foto_de_perfil.png') }}"
+                alt="Foto del alumno"
+                class="foto"
+              />
+            </div>
+            <div class="info">
+              <h2>Bienvenido</h2>
+              <h3>{{nombre}} {{apellidoP}} {{apellidoM}}</h3>
+              <p><strong>Telefono:</strong> {{tel}}</p>
+              <p><strong>Rol:</strong> {{rol}}</p>
+              <p><strong>Correo:</strong> {{correo}}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
