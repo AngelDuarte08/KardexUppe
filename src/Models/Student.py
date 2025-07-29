@@ -1,6 +1,8 @@
+#Models
 from Models.User import User #Father class
 from database.connection import Model #Database 
 
+#Flask
 from flask import request
 
 class Student(User):
@@ -18,14 +20,14 @@ class Student(User):
 
             data = [self.__user, self.__password] 
 
-            query = "SELECT idAlumno, correo, contrasena FROM Alumnos WHERE correo = %s AND contrasena = %s;"
+            query = "SELECT idAlumno, matricula FROM Alumnos WHERE correo = %s AND contrasena = %s;"
 
             db = Model(query, data, 0)
             resultDB = db.command()
         except: 
             resultDB = None
         finally: 
-            return resultDB 
+            return resultDB
         
     def credential(self, idUser):
         self.__idUser = idUser
@@ -36,6 +38,16 @@ class Student(User):
         dataCredential = db.command()
 
         return dataCredential[0]
+    
+    def kardex(self, matricula):
+        self.__matricula = matricula
+        data = [self.__matricula]
+
+        query = "SELECT * FROM kardexvista WHERE matricula = %s;"
+        db = Model(query, data, 0)
+        result = db.command()
+        return result
+
 
     def register():
         pass

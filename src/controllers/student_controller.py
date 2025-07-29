@@ -4,6 +4,9 @@ from flask import Blueprint, render_template, session, redirect, url_for
 #Models
 from Models.Student import Student
 
+#Collections
+from collections import defaultdict
+
 
 #Students
 student_bp = Blueprint('student_bp', __name__, url_prefix='/alumnos')
@@ -36,3 +39,27 @@ def inicio():
                             cuatrimestre=fortMonth,
                             grupo=group,
                             correo=email )
+
+
+@student_bp.route("/Kardex")
+def Kardex():
+    student = Student()
+
+    matricula = session.get("matricula")
+    resultDB = student.kardex(matricula)
+
+    subjectsPerCuatri = defaultdict(list)
+    for subject in resultDB:
+        cuatri =  subject[6]
+        subjectsPerCuatri[cuatri].append(subject)
+
+    return render_template("Students/Kardex.html", materiasPorCuatri=subjectsPerCuatri)
+
+
+@student_bp.route("/")
+def LogOut():
+
+    session["id_user"] = ""
+    session["matricula"] = ""
+    return render_template("auth/index.html")
+

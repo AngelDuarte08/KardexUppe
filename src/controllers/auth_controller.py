@@ -11,8 +11,9 @@ auth_bp = Blueprint('auth_bp', __name__)
 @auth_bp.route("/")
 def index():
 
-    session["user"] = ""
     session["id_user"] = ""
+    session["matricula"] = ""
+    session["rol"] = ""
 
     return render_template("auth/index.html")
 
@@ -36,38 +37,23 @@ def auth():
             dataDB = resultDB[0]
 
             idDB = dataDB[0]
-            userDB = dataDB[1]
-            psswdDB = dataDB[2]
-            rolDB = dataDB[3]
+            rolDB = dataDB[1]
             
-            if userLogin == userDB and psswdLogin == psswdDB:
-                if rolDB == "Administrador":
-                    session["user"] = userDB
-                    session["id_user"] = idDB
-                    return redirect(url_for("admin_bp.inicio"))
-                
-                elif rolDB == "Docente":
-                    session["user"] = userDB
-                    session["id_user"] = idDB
-                    return redirect(url_for("teacher_bp.inicio"))
-                
-            else: 
-                errorMsg = "Usuario o contraseña incorrectos"
-                return render_template("auth/index.html", error = errorMsg)
-                
-
+            if rolDB == "Administrador":
+                session["id_user"] = idDB
+                session["rol"] = rolDB
+                return redirect(url_for("admin_bp.inicio"))
+            
+            elif rolDB == "Docente":
+                session["id_user"] = idDB
+                session["rol"] = rolDB
+                return redirect(url_for("teacher_bp.inicio"))
     else:
         dataDB = resultDB[0]
 
         idDB = dataDB[0]
-        userDB = dataDB[1]
-        psswdDB = dataDB[2]
+        matricula= dataDB[1]
 
-        session["user"] = userDB
         session["id_user"] = idDB
-        
-        if userLogin == userDB and psswdLogin == psswdDB:
-            return redirect(url_for("student_bp.inicio"))
-        else: 
-            errorMsg = "Usuario o contraseña incorrectos"
-            return render_template("auth/index.html", error = errorMsg)
+        session["matricula"] = matricula
+        return redirect(url_for("student_bp.inicio"))

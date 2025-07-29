@@ -1,0 +1,233 @@
+
+@font-face {
+  font-family: 'Rubik';
+  src: url('../Fonts/Rubik/Rubik-Bold.ttf');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Rubik';
+  src: url('../Fonts/Rubik/Rubik-Regular.ttf');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face{
+  font-family: 'Rubik';
+  src: url('../Fonts/Rubik/Rubik-Medium.ttf');
+  font-weight: 500;
+  font-style: normal;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f4f6fc; /* el fondo general */
+}
+
+/* top */
+.main-header {
+  background: #151e2d;
+  color: #fff;
+  padding: 0 0 0 30px;
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-bottom: 5px solid #405a8a;
+  font-size: 40px ;
+  font-weight: 700;
+  font-family: 'Rubik';
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.escudo {
+  height: 70px;
+  margin-right: 40px;
+}
+
+/* Menu */
+.main-body {
+  font-family: 'Rubik';
+  font-weight: 400;
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 100%;
+}
+
+.menu-lateral {
+  width: 280px;
+  min-width: 0px;
+  background: #ffffff;
+  border: 2px solid #b7c4d6;
+  padding: 20px;
+  box-sizing: border-box;
+  height: 40%;
+  border-radius: 14px;
+  margin-left: 20px;
+  margin-top: 50px;
+}
+
+.roadrunner{
+  height: 70px;
+}
+
+.subtitle{
+  width: 300px;
+}
+
+.contenido {
+  flex: 1;
+  padding: 30px;
+  background: #f4f6fc;
+  overflow-y: auto;
+  height: 100%;
+  font-weight: 400;
+}
+
+.profile {
+  display: flex;
+  font-weight: 400;
+  font-family: 'Rubik';
+  font-size: medium;
+  background-color: #ffffff;
+  border-radius: 10px;
+  height: 50%;
+  border: 2px solid #b7c4d6;
+}
+
+.activo{
+  font-size: 18px;
+  text-decoration: underline;
+}
+
+ul {
+  gap: 20px;
+  list-style: none;
+  padding: 24px;
+  margin: 0;
+}
+
+li a {
+  text-decoration: none;
+  color: #151e2d;
+  font-weight: bold;
+  line-height: 1.6;
+}
+
+.menu-title{
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 24px;
+  color: #405a8a;
+  font-weight: 700;
+  font-family: 'Rubik';
+}
+
+.profile-title{
+  width: 100%;
+  margin-top: 20px;
+  font-size: 24px;
+  color: #405a8a;
+  font-weight: 700;
+  font-family: 'Rubik';
+}
+
+.title{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 400;
+  font-family: 'Rubik';
+}
+
+/* Table */
+
+.info{
+  flex-grow: 1;
+  min-width: 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background-color: #e8f1fa;
+  border-radius: 10px;
+  box-shadow: 0 2px 16px rgb(188 214 246 / 52%);
+  overflow: hidden;
+  font-size: 1em;
+  text-align: center;
+}
+thead th {
+  background-color: #151e2d;
+  color: white;
+  font-weight: 700;
+  padding: 12px 15px;
+  letter-spacing: 0.3px;
+}
+tbody td {
+  background:#d2e4f6;
+  padding: 14px 12px;
+  border-right: 1px solid #c8daf3;
+  font-weight: 600;
+  color:#151e2d;
+}
+tbody td:last-child{
+  border-right: none; /* Elimina el borde derecho de la última celda */
+}
+tbody tr:not(:last-child) td {
+  border-bottom: 1.5px solid whitesmoke; /* Añade un borde inferior a todas las filas excepto la última */
+}
+.nota-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    margin: 0;
+}
+.estado {
+  border-radius: 12px;
+  padding: 6px 12px;
+  font-weight: 700;
+  display: inline-block;
+  font-size: 1em;
+  user-select: none;
+}
+.Aprobado {
+  background-color: #377fc3;
+  color: white;
+}
+.Cursando {
+  background-color: white;
+  color: #2d2d2d;
+  border: 1.5px solid #bbb;
+}
+.Reprobado {
+  background-color: #dc2626;
+  color: white;
+}
+.Recursando {
+  background-color: #ffe168;
+  color: #594f1e;
+  border: 1.5px solid #dac101;
+}

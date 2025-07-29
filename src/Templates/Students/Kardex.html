@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Credencial Digital UPPE</title>
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/Kardex.css')}}"
+    />
+  </head>
+  <body>
+    <header class="main-header">
+      <div class="header-content">
+        <span class="titulo-principal">KardexUPPE</span>
+        <img
+          src="{{url_for('static', filename='Image/Logo_Blanco.png')}}"
+          alt="logo UPPE"
+          class="escudo"
+        />
+      </div>
+    </header>
+
+    <main class="main-body">
+      <nav class="menu-lateral">
+        <h2 class="menu-title">Menu</h2>
+        <ul>
+          <li>
+            <a href="{{url_for('student_bp.inicio')}}">Inicio</a>
+          </li>
+          <li class="activo"><a href="">Mi Kardex</a></li>
+          <li>
+            <a href="{{url_for('student_bp.LogOut')}}">Cerrar sesión</a>
+          </li>
+        </ul>
+      </nav>
+
+      <section class="contenido">
+        <div class="credencial-card">
+          <div class="header">
+            <div class="title">
+              <h1 class="profile-title">Kardex</h1>
+              <img
+                src="{{url_for('static', filename='Image/Correcaminos_azul.png')}}"
+                alt="logo"
+                class="roadrunner"
+              />
+              <p class="subtitle">Universidad Politécnica de Pénjamo</p>
+            </div>
+          </div>
+
+          <div class="profile">
+            <div class="info">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Materia</th>
+                    <th>Clave</th>
+                    <th>Calificación</th>
+                    <th>Estado</th>
+                    <th>Créditos</th>
+                    <th>Fecha</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for cuatri, materias in materiasPorCuatri.items() %}
+                  <tr>
+                    <th
+                      colspan="6"
+                      style="
+                        background-color: #f0f0f0;
+                        text-align: left;
+                        font-weight: bold;
+                      "
+                    >
+                      {% set nombres = ["Primer", "Segundo", "Tercer", "Cuarto",
+                      "Quinto", "Sexto", "Séptimo", "Octavo", "Noveno",
+                      "Décimo"] %} {{ nombres[cuatri - 1] }} Cuatrimestre
+                    </th>
+                  </tr>
+
+                  {% for materia in materias %}
+                  <tr>
+                    <td>{{ materia[0] }}</td>
+                    <td>{{ materia[1] }}</td>
+                    <td>{{ materia[2] }}</td>
+                    <td class="{{ materia[3] }}">
+                      <span>{{ materia[3] }}</span>
+                    </td>
+                    <td>{{ materia[4] }}</td>
+                    <td>
+                      {% if materia[5] %} {{ materia[5].strftime('%Y-%m-%d') }}
+                      {% else %} No registrada {% endif %}
+                    </td>
+                  </tr>
+                  {% endfor %} {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

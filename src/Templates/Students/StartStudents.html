@@ -25,9 +25,13 @@
       <nav class="menu-lateral">
         <h2 class="menu-title">Menu</h2>
         <ul>
-          <li class="activo"><a href="" target="_blank">Inicio</a></li>
-          <li><a href="" target="_blank">Mi Kardex</a></li>
-          <li><a href="" target="_blank">Cerrar sesión</a></li>
+          <li class="activo"><a href="">Inicio</a></li>
+          <li>
+            <a href="{{url_for('student_bp.Kardex')}}">Mi Kardex</a>
+          </li>
+          <li>
+            <a href="{{url_for('student_bp.LogOut')}}">Cerrar sesión</a>
+          </li>
         </ul>
       </nav>
 
