@@ -16,7 +16,7 @@ class Administrators(User):
 
             data = [self.__user, self.__password]
 
-            query = "SELECT idAdmin, correo, contrasena, rol FROM Admins WHERE correo = %s AND contrasena = %s;"
+            query = "SELECT idAdmin, rol FROM Admins WHERE correo = %s AND contrasena = %s;"
 
             db = Model(query, data, 0)
             resultDB = db.command()
@@ -37,5 +37,7 @@ class Administrators(User):
 
         
 
-    def register():
-        pass
+    def register(self, data):
+        query= "INSERT INTO Alumnos(nombres, apellidoP, apellidoM, direccion, telefono, correo, contrasena, matricula, cuatrimestre, grupo, curp, carrera) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);" 
+        db = Model(query, data, 1)
+        db.command()

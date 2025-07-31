@@ -6,7 +6,7 @@
     <title>Credencial Digital UPPE</title>
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/Start.css') }}"
+      href="{{url_for('static', filename='css/Message.css')}}"
     />
   </head>
   <body>
@@ -14,7 +14,7 @@
       <div class="header-content">
         <span class="titulo-principal">KardexUPPE</span>
         <img
-          src="{{ url_for('static', filename='Image/Logo_Blanco.png') }}"
+          src="{{url_for('static', filename='Image/Logo_Blanco.png')}}"
           alt="logo UPPE"
           class="escudo"
         />
@@ -25,10 +25,17 @@
       <nav class="menu-lateral">
         <h2 class="menu-title">Menu</h2>
         <ul>
-          <li class="activo"><a href="">Inicio</a></li>
-          <li><a href="" >Registar Calificaciones</a></li>
-          <li><a href="" >Tutorias<a></li>
-          <li><a href="" >Cerrar sesión</a></li>
+          <li><a href="{{url_for('admins_bp.inicio')}}">Inicio</a></li>
+          <li class="activo">
+            <a href="">Registar alumnos</a>
+          </li>
+          <li>
+            <a href="{{url_for('admins_bp.registerU')}}">Registar empleados</a>
+          </li>
+          <li>
+            <a href="{{url_for('admins_bp.registerM')}}">Registar materias</a>
+          </li>
+          <li><a href="{{url_for('admins_bp.LogOut')}}">Cerrar sesión</a></li>
         </ul>
       </nav>
 
@@ -36,9 +43,9 @@
         <div class="credencial-card">
           <div class="header">
             <div class="title">
-              <h1 class="profile-title">Credencial Escolar</h1>
+              <h1 class="profile-title">Kardex</h1>
               <img
-                src="{{ url_for('static', filename='Image/Correcaminos_azul.png') }}"
+                src="{{url_for('static', filename='Image/Correcaminos_azul.png')}}"
                 alt="logo"
                 class="roadrunner"
               />
@@ -47,19 +54,17 @@
           </div>
 
           <div class="profile">
-            <div class="lFoto">
-              <img
-                src="{{ url_for('static', filename='Image/Foto_de_perfil.png') }}"
-                alt="Foto del alumno"
-                class="foto"
-              />
-            </div>
             <div class="info">
-              <h2>Bienvenido</h2>
-              <h3>{{nombre}} {{apellidoP}} {{apellidoM}}</h3>
-              <p><strong>Telefono:</strong> {{tel}}</p>
-              <p><strong>Rol:</strong> {{rol}}</p>
-              <p><strong>Correo:</strong> {{correo}}</p>
+              <h1>{{tipo}}</h1>
+              <p>{{Mensage}}</p>
+              <div class="btnBottom">
+                <button
+                  onclick="location.href='{{ url_for('admins_bp.registerS') }}'"
+                  class="btnContinue"
+                >
+                  Continuar
+                </button>
+              </div>
             </div>
           </div>
         </div>

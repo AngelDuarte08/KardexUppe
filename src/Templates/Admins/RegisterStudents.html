@@ -25,13 +25,13 @@
       <nav class="menu-lateral">
         <h2 class="menu-title">Menu</h2>
         <ul>
-          <li><a href="" target="_blank">Inicio</a></li>
+          <li><a href="{{url_for('admins_bp.inicio')}}">Inicio</a></li>
           <li class="activo">
-            <a href="" target="_blank">Registar alumnos</a>
+            <a href="">Registar alumnos</a>
           </li>
-          <li><a href="" target="_blank">Registar empleados</a></li>
-          <li><a href="" target="_blank">Registar materias</a></li>
-          <li><a href="" target="_blank">Cerrar sesión</a></li>
+          <li><a href="{{url_for('admins_bp.registerU')}}" >Registar empleados</a></li>
+          <li><a href="{{url_for('admins_bp.registerM')}}" >Registar materias</a></li>
+          <li><a href="{{url_for('admins_bp.LogOut')}}" >Cerrar sesión</a></li>
         </ul>
       </nav>
 
@@ -51,13 +51,14 @@
 
           <div class="profile">
             <div class="inputs">
+            <form method="POST" action="{{url_for("admins_bp.insert_student")}}">
               <h3>Infomarción personal</h3>
               <div class="info">
                 <div class="input-group">
                   <input
                     required=""
                     type="text"
-                    name="text"
+                    name="names"
                     autocomplete="off"
                     class="input-info"
                     id="names"
@@ -68,7 +69,7 @@
                   <input
                     required=""
                     type="text"
-                    name="text"
+                    name="lastname1"
                     autocomplete="off"
                     class="input-info"
                     id="lastname1"
@@ -79,7 +80,7 @@
                   <input
                     required=""
                     type="text"
-                    name="text"
+                    name="lastname2"
                     autocomplete="off"
                     class="input-info"
                     id="lastname2"
@@ -90,7 +91,7 @@
                   <input
                     required=""
                     type="text"
-                    name="text"
+                    name="curp"
                     autocomplete="off"
                     class="input-info"
                     id="curp"
@@ -101,7 +102,7 @@
                   <input
                     required=""
                     type="text"
-                    name="text"
+                    name="tel"
                     autocomplete="off"
                     class="input-info"
                     id="tel"
@@ -116,7 +117,7 @@
                   <input
                     required=""
                     type="text"
-                    name="text"
+                    name="street"
                     autocomplete="off"
                     class="input-info"
                     id="street"
@@ -127,7 +128,7 @@
                   <input
                     required=""
                     type="text"
-                    name="text"
+                    name="number"
                     autocomplete="off"
                     class="input-info"
                     id="number"
@@ -138,7 +139,7 @@
                   <input
                     required=""
                     type="text"
-                    name="text"
+                    name="zipCode"
                     autocomplete="off"
                     class="input-info"
                     id="zipCode"
@@ -149,7 +150,7 @@
                   <input
                     required=""
                     type="text"
-                    name="text"
+                    name="coliny"
                     autocomplete="off"
                     class="input-info"
                     id="coliny"
@@ -160,7 +161,7 @@
                   <input
                     required=""
                     type="text"
-                    name="text"
+                    name="city"
                     autocomplete="off"
                     class="input-info"
                     id="city"
@@ -171,7 +172,7 @@
                   <input
                     required=""
                     type="text"
-                    name="text"
+                    name="state"
                     autocomplete="off"
                     class="input-info"
                     id="state"
@@ -182,7 +183,7 @@
                   <input
                     required=""
                     type="text"
-                    name="text"
+                    name="country"
                     autocomplete="off"
                     class="input-info"
                     id="country"
@@ -197,7 +198,18 @@
                   <input
                     required=""
                     type="text"
-                    name="text"
+                    name="matricula"
+                    autocomplete="off"
+                    class="input-info"
+                    id="matricula"
+                  />
+                  <label class="label-info">Matricula</label>
+                </div>
+                <div class="input-group">
+                  <input
+                    required=""
+                    type="text"
+                    name="quarter"
                     autocomplete="off"
                     class="input-info"
                     id="quarter"
@@ -208,31 +220,37 @@
                   <input
                     required=""
                     type="text"
-                    name="text"
+                    name="group"
                     autocomplete="off"
                     class="input-info"
                     id="group"
                   />
                   <label class="label-info">Grupo</label>
                 </div>
+                <div class="vacio1">
+                    Espacio
+                  </div>
                 <div class="input-wrapper">
                   <input
                     placeholder="Genere un correo electronico"
                     class="input"
-                    name="text"
+                    name="emailInput"
                     type="text"
+                    id="emailInput"
                   />
-                  <button class="btnGenerate">Generar correo</button>
+                  <button class="btnGenerate" type="button" onclick="generateEmail()">Generar correo</button>
                 </div>
                 <div class="input-wrapper">
                   <input
                     placeholder="Genere la contraseña"
                     class="input"
-                    name="text"
+                    name="passwordInput"
                     type="text"
+                    id="passwordInput"
                   />
-                  <button class="btnGenerate">Generar contraseña</button>
-                </div class="input-group">
+                  <button class="btnGenerate" type="button" onclick="generatePassword()">Generar contraseña</button>
+                </div>
+                <div class="input-group">
                   <label for="role">Carrera: </label>
                   <select name="role" id="role">
                     <option value="LAGE">
@@ -265,14 +283,17 @@
                 </div>
               </div>
             </div>
-
+            
+          </div>
           <div class="btnBottom">
             <button class="btnContinue">Continuar</button>
           </div>
-        </div>
+        </form>
         </div>
         
       </section>
     </main>
+
+    <script type="" src="{{ url_for('static', filename='Js/Form.js') }}"></script>
   </body>
 </html>

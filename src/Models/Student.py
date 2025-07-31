@@ -49,5 +49,10 @@ class Student(User):
         return result
 
 
-    def register():
-        pass
+    def register(self, data):
+        query= "INSERT INTO Alumnos(nombres, apellidoP, apellidoM, direccion, telefono, correo, contrasena, matricula, cuatrimestre, grupo, curp, carrera) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);" 
+        print(query)
+        print(data)
+        print(len(data))
+        db = Model(query, data, 1)
+        db.command()

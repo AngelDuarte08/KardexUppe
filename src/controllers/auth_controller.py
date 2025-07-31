@@ -42,7 +42,7 @@ def auth():
             if rolDB == "Administrador":
                 session["id_user"] = idDB
                 session["rol"] = rolDB
-                return redirect(url_for("admin_bp.inicio"))
+                return redirect(url_for("admins_bp.inicio"))
             
             elif rolDB == "Docente":
                 session["id_user"] = idDB

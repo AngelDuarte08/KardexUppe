@@ -353,3 +353,8 @@ select:focus {
 .vacio{
   color: #ffffff;
 }
+
+.vacio1{
+  color: #ffffff;
+  font-size: 40px;
+}

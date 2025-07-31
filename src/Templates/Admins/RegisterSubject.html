@@ -25,13 +25,13 @@
       <nav class="menu-lateral">
         <h2 class="menu-title">Menu</h2>
         <ul>
-          <li><a href="/Inicio_administrador" target="_blank">Inicio</a></li>
-          <li><a href="" target="_blank">Registar alumnos</a></li>
-          <li><a href="" target="_blank">Registar empleados</a></li>
+          <li><a href="{{url_for('admins_bp.inicio')}}">Inicio</a></li>
+          <li><a href="{{url_for('admins_bp.registerS')}}">Registar alumnos</a></li>
+          <li><a href="{{url_for('admins_bp.registerU')}}">Registar empleados</a></li>
           <li class="activo">
-            <a href="" target="_blank">Registar materias</a>
+            <a href="">Registar materias</a>
           </li>
-          <li><a href="" target="_blank">Cerrar sesión</a></li>
+          <li><a href="{{url_for('admins_bp.LogOut')}}">Cerrar sesión</a></li>
         </ul>
       </nav>
 
@@ -51,6 +51,7 @@
 
           <div class="profile">
             <div class="inputs">
+              <form method="POST" action="">
               <h3>Infomarción materia</h3>
               <div class="info">
                 <div class="input-group">
@@ -106,6 +107,7 @@
             <button class="btnContinue">Continuar</button>
           </div>
         </div>
+      </form>
       </section>
     </main>
   </body>

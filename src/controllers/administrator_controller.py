@@ -1,11 +1,15 @@
 #Flask
-from flask import Blueprint, render_template, session, redirect, url_for
+from flask import Blueprint, render_template, session, redirect, url_for, request
+
+#JSON
+import json
 
 #Models
 from Models.Administrators import Administrators
+from Models.Student import Student
 
 #Admins
-admins_bp = Blueprint('admin_bp', __name__, url_prefix='/administrador' )
+admins_bp = Blueprint('admins_bp', __name__, url_prefix='/administrador' )
 
 
 @admins_bp.route("/inicio")
@@ -44,3 +48,76 @@ def registerS():
 @admins_bp.route("/Registrar_materia")
 def registerM():
     return render_template("Admins/RegisterSubject.html")
+
+@admins_bp.route("/")
+def LogOut():
+    session["id_user"] = ""
+    session["rol"] = ""
+
+    return render_template("auth/index.html")
+
+@admins_bp.route("/Insertar_alumno", methods=['POST'])
+def insert_student():
+
+    names = request.form.get("names")
+    lastnameF = request.form.get("lastname1")
+    lastnameM = request.form.get("lastname2")
+    curp = request.form.get("curp")
+    tel = request.form.get("tel")
+    street = request.form.get("street")
+    num = request.form.get("number")
+    cp = request.form.get("zipCode")
+    colony = request.form.get("coliny")
+    city = request.form.get("city")
+    state = request.form.get("state")
+    country = request.form.get("country")
+    matricula = request.form.get("matricula")
+    cuatrimestre = int(request.form.get("quarter"))
+    group = request.form.get("group")
+    email = request.form.get("emailInput")
+    pssword = request.form.get("passwordInput")
+    career = request.form.get("role")
+
+    adress = {
+        "calle": street,
+        "numero": num,
+        "cp": cp,
+        "colonia": colony,
+        "ciudad": city,
+        "estado": state,
+        "pais": country
+    }
+    adress_json = json.dumps(adress)
+
+    dataForm = [
+    names,
+    lastnameF,
+    lastnameM,
+    adress_json,
+    tel,
+    email,
+    pssword,
+    matricula,
+    cuatrimestre,
+    group,
+    curp,
+    career]
+
+
+    print(len(dataForm))
+    print(dataForm)
+
+    try:
+        student = Student()
+        student.register(dataForm)
+    except:
+        kind = "Error"
+        message = "Usuario No se puede registra"
+        
+        return render_template("Warning/Message.html", tipo=kind, Mensage=message)
+    finally: 
+        kind = "Exitoso"
+        message = "Usuario registrado correctamente"
+        
+
+        return render_template("Warning/MessageStudent.html", tipo=kind, Mensage=message)

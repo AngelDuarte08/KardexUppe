@@ -1,5 +1,5 @@
 #Flask
-from flask import Blueprint, render_template, session, redirect, url_for
+from flask import Blueprint, render_template, session, redirect, url_for, request
 
 #Models
 from Models.Student import Student
@@ -62,4 +62,3 @@ def LogOut():
     session["id_user"] = ""
     session["matricula"] = ""
     return render_template("auth/index.html")
-
