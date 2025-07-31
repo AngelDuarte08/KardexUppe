@@ -51,14 +51,14 @@
 
           <div class="profile">
             <div class="inputs">
-              <form method="POST" action="">
+              <form method="POST" action="{{url_for("admins_bp.insert_admins")}}">
               <h3>Infomarción personal</h3>
               <div class="info">
                 <div class="input-group">
                   <input
                     required=""
                     type="text"
-                    name="text"
+                    name="names"
                     autocomplete="off"
                     class="input-info"
                     id="names"
@@ -70,7 +70,7 @@
                   <input
                     required=""
                     type="text"
-                    name="text"
+                    name="lastname1"
                     autocomplete="off"
                     class="input-info"
                     id="lastname1"
@@ -82,7 +82,7 @@
                   <input
                     required=""
                     type="text"
-                    name="text"
+                    name="lastname2"
                     autocomplete="off"
                     class="input-info"
                     id="lastname2"
@@ -94,10 +94,10 @@
                   <input
                     required=""
                     type="text"
-                    name="text"
+                    name="tel"
                     autocomplete="off"
                     class="input-info"
-                    id="names"
+                    id="tel"
                     placeholder="Ingrese el numero de telefono"
                   />
                   <label class="label-info">Telefono</label>
@@ -110,7 +110,7 @@
                   <input
                     required=""
                     type="text"
-                    name="text"
+                    name="street"
                     autocomplete="off"
                     class="input-info"
                     id="street"
@@ -122,7 +122,7 @@
                   <input
                     required=""
                     type="text"
-                    name="text"
+                    name="number"
                     autocomplete="off"
                     class="input-info"
                     id="number"
@@ -134,7 +134,7 @@
                   <input
                     required=""
                     type="text"
-                    name="text"
+                    name="zipCode"
                     autocomplete="off"
                     class="input-info"
                     id="zipCode"
@@ -146,7 +146,7 @@
                   <input
                     required=""
                     type="text"
-                    name="text"
+                    name="coliny"
                     autocomplete="off"
                     class="input-info"
                     id="coliny"
@@ -158,7 +158,7 @@
                   <input
                     required=""
                     type="text"
-                    name="text"
+                    name="city"
                     autocomplete="off"
                     class="input-info"
                     id="city"
@@ -170,7 +170,7 @@
                   <input
                     required=""
                     type="text"
-                    name="text"
+                    name="state"
                     autocomplete="off"
                     class="input-info"
                     id="state"
@@ -182,7 +182,7 @@
                   <input
                     required=""
                     type="text"
-                    name="text"
+                    name="country"
                     autocomplete="off"
                     class="input-info"
                     id="country"
@@ -198,24 +198,29 @@
                   <input
                     placeholder="Genere un correo electronico"
                     class="input"
-                    name="text"
+                    name="emailInput"
                     type="text"
+                    id="emailInput"
                   />
-                  <button class="btnGenerate">Generar correo</button>
+                  <button class="btnGenerate" type="button" onclick="generateInstitutionalEmail()">Generar correo</button>
                 </div>
                 <div class="input-wrapper">
                   <input
                     placeholder="Genere la contraseña"
                     class="input"
-                    name="text"
+                    name="passwordInput"
                     type="text"
+                    id="passwordInput"
                   />
-                  <button class="btnGenerate">Generar contraseña</button>
+                  <button class="btnGenerate" type="button" onclick="generatePassword()">Generar contraseña</button>
+                </div>
+                <div class="vacio">
+                  Espacio       Ldejas
                 </div>
                 <label for="role">Rol: </label>
                 <select name="role" id="role">
-                  <option value="teacher">Docente</option>
-                  <option value="admin">Administrador</option>
+                  <option value="Docente">Docente</option>
+                  <option value="Administrador">Administrador</option>
                 </select>
               </div>
             </div>
@@ -225,8 +230,10 @@
             <button class="btnContinue">Continuar</button>
           </div>
         </div>
+
       </form>
       </section>
     </main>
+    <script type="" src="{{ url_for('static', filename='Js/Form.js') }}"></script>
   </body>
 </html>

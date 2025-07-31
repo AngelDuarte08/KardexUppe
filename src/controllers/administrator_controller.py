@@ -8,6 +8,9 @@ import json
 from Models.Administrators import Administrators
 from Models.Student import Student
 
+#Sql
+from mysql.connector import Error
+
 #Admins
 admins_bp = Blueprint('admins_bp', __name__, url_prefix='/administrador' )
 
@@ -89,35 +92,68 @@ def insert_student():
     }
     adress_json = json.dumps(adress)
 
-    dataForm = [
-    names,
-    lastnameF,
-    lastnameM,
-    adress_json,
-    tel,
-    email,
-    pssword,
-    matricula,
-    cuatrimestre,
-    group,
-    curp,
-    career]
-
-
-    print(len(dataForm))
-    print(dataForm)
+    dataForm = [names, lastnameF, lastnameM, adress_json, tel, email, pssword, matricula,
+    cuatrimestre, group, curp, career]
 
     try:
         student = Student()
         student.register(dataForm)
-    except:
+    except Error as e:
         kind = "Error"
-        message = "Usuario No se puede registra"
+        message = f"Usuario no se puede registra \n{e}"
         
-        return render_template("Warning/Message.html", tipo=kind, Mensage=message)
+        return render_template("Warning/MessageStudent.html", tipo=kind, Mensage=message)
     finally: 
         kind = "Exitoso"
         message = "Usuario registrado correctamente"
-        
 
         return render_template("Warning/MessageStudent.html", tipo=kind, Mensage=message)
+    
+@admins_bp.route("/Insertar_administrador", methods=['POST'])
+def insert_admins():
+
+    names = request.form.get("names")
+    lastnameF = request.form.get("lastname1")
+    lastnameM = request.form.get("lastname2")
+    tel = request.form.get("tel")
+    street = request.form.get("street")
+    num = request.form.get("number")
+    cp = request.form.get("zipCode")
+    colony = request.form.get("coliny")
+    city = request.form.get("city")
+    state = request.form.get("state")
+    country = request.form.get("country")
+    email = request.form.get("emailInput")
+    pssword = request.form.get("passwordInput")
+    role = request.form.get("role")
+
+    adress = {
+        "calle": street,
+        "numero": num,
+        "cp": cp,
+        "colonia": colony,
+        "ciudad": city,
+        "estado": state,
+        "pais": country
+    }
+    adress_json = json.dumps(adress)
+
+    dataForm = [names, lastnameF, lastnameM, adress_json, tel, email, pssword, role]
+
+    print(dataForm)
+
+    try:
+        admin = Administrators()
+        admin.register(dataForm)
+
+    except Error as e:
+        kind = "Error"
+        message = f"Usuario no eregistrado \n{e}"
+
+        return render_template("Warning/MessageAdmins.html", tipo=kind, Mensage=message)
+    
+    finally:
+        kind = "Exitoso"
+        message = "Usuario registrado correctamente"
+
+        return render_template("Warning/MessageAdmins.html", tipo=kind, Mensage=message)

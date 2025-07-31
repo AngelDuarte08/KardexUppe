@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Credencial Digital UPPE</title>
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/Message.css')}}"
+    />
+  </head>
+  <body>
+    <header class="main-header">
+      <div class="header-content">
+        <span class="titulo-principal">KardexUPPE</span>
+        <img
+          src="{{url_for('static', filename='Image/Logo_Blanco.png')}}"
+          alt="logo UPPE"
+          class="escudo"
+        />
+      </div>
+    </header>
+
+    <main class="main-body">
+      <nav class="menu-lateral">
+        <h2 class="menu-title">Menu</h2>
+        <ul>
+          <li><a href="{{url_for('admins_bp.inicio')}}">Inicio</a></li>
+          <li>
+            <a href="{{url_for('admins_bp.registerS')}}">Registar alumnos</a>
+          </li>
+          <li class="activo">
+            <a href="">Registar empleados</a>
+          </li>
+          <li>
+            <a href="{{url_for('admins_bp.registerM')}}">Registar materias</a>
+          </li>
+          <li><a href="{{url_for('admins_bp.LogOut')}}">Cerrar sesión</a></li>
+        </ul>
+      </nav>
+
+      <section class="contenido">
+        <div class="credencial-card">
+          <div class="header">
+            <div class="title">
+              <h1 class="profile-title">Kardex</h1>
+              <img
+                src="{{url_for('static', filename='Image/Correcaminos_azul.png')}}"
+                alt="logo"
+                class="roadrunner"
+              />
+              <p class="subtitle">Universidad Politécnica de Pénjamo</p>
+            </div>
+          </div>
+
+          <div class="profile">
+            <div class="info">
+              <h1>{{tipo}}</h1>
+              <p>{{Mensage}}</p>
+              <div class="btnBottom">
+                <button
+                  onclick="location.href='{{ url_for('admins_bp.registerU') }}'"
+                  class="btnContinue"
+                >
+                  Continuar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
