@@ -7,6 +7,7 @@ import json
 #Models
 from Models.Administrators import Administrators
 from Models.Student import Student
+from Models.Subjects import Subject
 
 #Sql
 from mysql.connector import Error
@@ -140,7 +141,6 @@ def insert_admins():
 
     dataForm = [names, lastnameF, lastnameM, adress_json, tel, email, pssword, role]
 
-    print(dataForm)
 
     try:
         admin = Administrators()
@@ -157,3 +157,32 @@ def insert_admins():
         message = "Usuario registrado correctamente"
 
         return render_template("Warning/MessageAdmins.html", tipo=kind, Mensage=message)
+    
+@admins_bp.route("/Insertar_subject", methods=['POST'])
+def insert_subject():
+
+
+    names = request.form.get("name")
+    code = request.form.get("code")
+    creditos = float(request.form.get("credits"))
+    hours = int(request.form.get("hours"))
+    quarter = int(request.form.get("quarter"))
+
+    dataForm = [names, code, creditos, hours, quarter]
+
+
+    try:  
+        subjects = Subject()
+        subjects.register(dataForm)
+
+    except Error as e:
+        kind = "Error"
+        message = f"Error al invocar register(): {e}"
+
+        return render_template("Warning/MessageSubjects.html", tipo=kind, Mensage=message)
+    
+    finally:
+        kind = "Exitoso"
+        message = "Usuario registrado correctamente"
+
+        return render_template("Warning/MessageSubjects.html", tipo=kind, Mensage=message)

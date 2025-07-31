@@ -358,3 +358,11 @@ select:focus {
   color: #ffffff;
   font-size: 40px;
 }
+
+.input-group-last {
+  flex: 1 1 48%;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+

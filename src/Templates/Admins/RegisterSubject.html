@@ -51,53 +51,70 @@
 
           <div class="profile">
             <div class="inputs">
-              <form method="POST" action="">
+              <form method="POST" action="{{url_for('admins_bp.insert_subject')}}">
               <h3>Infomarción materia</h3>
+
               <div class="info">
                 <div class="input-group">
                   <input
                     required=""
                     type="text"
-                    name="text"
+                    name="name"
                     autocomplete="off"
                     class="input-info"
                     id="name"
                   />
                   <label class="label-info">Nombre</label>
                 </div>
+
                 <div class="input-group">
                   <input
                     required=""
                     type="text"
-                    name="text"
+                    name="code"
                     autocomplete="off"
                     class="input-info"
                     id="code"
                   />
                   <label class="label-info">Codigo del curso</label>
                 </div>
+
                 <div class="input-group">
                   <input
                     required=""
                     type="text"
-                    name="text"
+                    name="credits"
                     autocomplete="off"
                     class="input-info"
                     id="credits"
                   />
                   <label class="label-info">Numero de creditos</label>
                 </div>
+
                 <div class="input-group">
                   <input
                     required=""
                     type="text"
-                    name="text"
+                    name="hours"
                     autocomplete="off"
                     class="input-info"
                     id="hours"
                   />
                   <label class="label-info">Numero de horas</label>
                 </div>
+                
+                <div class="input-group-last">
+                  <input
+                    required=""
+                    type="text"
+                    name="quarter"
+                    autocomplete="off"
+                    class="input-info"
+                    id="quarter"
+                  />
+                  <label class="label-info">Cuatrimestre</label>
+                </div>
+
                 <div class="vacio">Espacio</div>
               </div>
             </div>
