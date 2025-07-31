@@ -39,6 +39,5 @@ class Administrators(User):
 
     def register(self, data):
         query= "INSERT INTO Admins(nombres, apellidoP, apellidoM, direccion, telefono, correo, contrasena, rol) VALUES(%s, %s, %s, %s, %s, %s, %s, %s);" 
-        print(data)
         db = Model(query, data, 1)
         db.command()
