@@ -41,3 +41,10 @@ class Administrators(User):
         query= "INSERT INTO Admins(nombres, apellidoP, apellidoM, direccion, telefono, correo, contrasena, rol) VALUES(%s, %s, %s, %s, %s, %s, %s, %s);" 
         db = Model(query, data, 1)
         db.command()
+
+    def serch(self,idUser):
+        self.__data = [idUser]
+        query = "SELECT nombres, apellidoP, apellidoM FROM Admins WHERE idAdmin = %s"
+        db = Model(query, self.__data, 0)
+        result = db.command()
+        return result[0]

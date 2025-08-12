@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Verificacion Calificaciones</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/Check.css') }}"
+    />
+  </head>
+  <body>
+    <header class="main-header">
+      <div class="header-content">
+        <span class="titulo-principal">KardexUPPE</span>
+        <img
+          src="{{ url_for('static', filename='Image/Logo_Blanco.png') }}"
+          alt="logo UPPE"
+          class="escudo"
+        />
+      </div>
+    </header>
+
+    <main class="main-body">
+      <nav class="menu-lateral">
+        <h2 class="menu-title">Menu</h2>
+        <ul>
+          <li><a href="{{url_for('teacher_bp.inicio')}}">Inicio</a></li>
+          <li class="activo"><a href="" >Registar Calificaciones</a></li>
+          <li><a href="" >Tutorias<a></li>
+          <li><a href="{{url_for('teacher_bp.LogOut')}}" >Cerrar sesión</a></li>
+        </ul>
+      </nav>
+
+      <section class="contenido">
+        <div class="credencial-card">
+          <div class="header">
+            <div class="title">
+              <h1 class="profile-title">Credencial Escolar</h1>
+              <img
+                src="{{ url_for('static', filename='Image/Correcaminos_azul.png') }}"
+                alt="logo"
+                class="roadrunner"
+              />
+              <p class="subtitle">Universidad Politécnica de Pénjamo</p>
+            </div>
+          </div>
+
+          <div class="profile">
+            <div class="info">
+                <h2>Materia: {{Materia}} </h2>
+                <h2>Codigo: {{Codigo}} </h2>
+                <h3>Docente: {{nombreD}} {{apellidoPD}} {{apellidoMD}}</h3>
+                <table>
+                <thead>
+                  <tr>
+                    <th>Matricula</th>
+                    <th>Nombre</th>
+                    <th>Calificación</th>
+                    <th>Estatus</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for fila in datos %}
+                    <tr>
+                        <td>{{ fila['matricula'] }}</td>
+                        <td>{{ fila['nombre_completo'] or 'No encontrado' }}</td>
+                        <td>{{ fila['calificacion'] }}</td>
+                        <td>{{ fila['estatus'] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+              </table>
+              <form method="POST" action="{{url_for('teacher_bp.registerKardex')}}">
+              <input type="hidden" name="datos" value='{{ datos | tojson }}'>
+              <div class="btnBottom">
+              <button class="btnConfirm">confirmar</button>
+              </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

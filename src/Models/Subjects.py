@@ -14,3 +14,10 @@ class Subject():
         query = "INSERT INTO Materias(nombreMateria, codigoCurso, numeroCreditos, numeroHoras, cuatrimestre) VALUES(%s, %s, %s, %s, %s);"
         db = Model(query, data, 1)
         db.command()
+
+    def serch(self, code):
+        data = [code]
+        query = "SELECT nombreMateria FROM Materias WHERE codigoCurso = %s;"
+        db = Model(query, data, 0)
+        result = db.command()
+        return result[0][0]

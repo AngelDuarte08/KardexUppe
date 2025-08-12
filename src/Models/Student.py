@@ -53,3 +53,11 @@ class Student(User):
         query= "INSERT INTO Alumnos(nombres, apellidoP, apellidoM, direccion, telefono, correo, contrasena, matricula, cuatrimestre, grupo, curp, carrera) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);" 
         db = Model(query, data, 1)
         db.command()
+
+    def serch(self, matriculas):
+        placeholders = ', '.join(['%s'] * len(matriculas))
+
+        query = f"SELECT matricula, nombres, apellidoP, apellidoM FROM Alumnos WHERE matricula IN ({placeholders});"
+        db = Model(query, matriculas, 0)
+        result = db.command()
+        return result
