@@ -57,3 +57,7 @@ def auth():
         session["id_user"] = idDB
         session["matricula"] = matricula
         return redirect(url_for("student_bp.inicio"))
+    
+@auth_bp.route("/Calendario")
+def calendar():
+    return render_template("auth/Calendar.html")

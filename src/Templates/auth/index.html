@@ -59,10 +59,18 @@
 
           <button type="submit">Acceder</button>
         </form>
-        <button type="button">Calendario escolar</button>
+        <button
+          type="button"
+          onclick="location.href='{{ url_for('auth_bp.calendar') }}'"
+        >
+          Calendario escolar
+        </button>
       </div>
     </div>
 
-    <script type="module" src="Assets/Js/scriptLogin.js"></script>
+    <script
+      type="module"
+      src="{{ url_for('static', filename='Js/Index.js') }}"
+    ></script>
   </body>
 </html>
