@@ -105,10 +105,13 @@ def excel():
         )
 
     except Exception as e:
+        kind = "Error"
+        message = f"Error al porcesar el archivo: {str(e)}"
         print("Error al procesar el archivo:", e)
         traceback.print_exc()
-        flash(f"Error al procesar el archivo: {str(e)}")
-        return redirect(url_for('teacher_bp.record_grades'))
+        return render_template('Warning/MessageTeacher.html',
+                               tipo=kind, 
+                               Mensage=message)
 
 
 @teacher_bp.route("/Confirmacion", methods=['POST'])
@@ -136,14 +139,19 @@ def registerKardex():
             )
             kardex.register(data)
 
-        flash("Datos guardados exitosamente en el Kardex.")
-        return redirect(url_for('teacher_bp.record_grades'))       
+        kind="Exito"
+        message = "Datos guardados exitosamente en el Kardex."
+        return render_template('Warning/MessageTeacher.html',
+                               tipo=kind, 
+                               Mensage=message)
     except Exception as e:
-        print("Error al guardar en Kardex:", e)
+        kind = "Error"
+        message = f"Error al guardar en Kardex: {str(e)}"
+        print("Error al procesar el archivo:", e)
         traceback.print_exc()
-        flash(f"Error al guardar en Kardex: {str(e)}")
-        return redirect(url_for('teacher_bp.record_grades'))
-        
+        return render_template('Warning/MessageTeacher.html',
+                               tipo=kind, 
+                               Mensage=message)        
 
 @teacher_bp.route("/")
 def LogOut():
