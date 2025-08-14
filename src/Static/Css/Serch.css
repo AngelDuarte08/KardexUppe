@@ -170,4 +170,36 @@ li a {
   margin-left: 30px;
 }
 
-/* Licenciado en Ingeniería en Tecnoloías de la información e Innovación Digital */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background-color: #e8f1fa;
+  border-radius: 10px;
+  box-shadow: 0 2px 16px rgb(188 214 246 / 52%);
+  overflow: hidden;
+  font-size: 1em;
+  text-align: center;
+  max-width: none;
+}
+thead th {
+  background-color: #151e2d;
+  color: white;
+  font-weight: 700;
+  padding: 12px 15px;
+  letter-spacing: 0.3px;
+}
+tbody td {
+  background:#d2e4f6;
+  padding: 14px 12px;
+  border-right: 1px solid #c8daf3;
+  font-weight: 600;
+  color:#151e2d;
+  white-space: nowrap;
+}
+tbody td:last-child{
+  border-right: none; /* Elimina el borde derecho de la última celda */
+}
+tbody tr:not(:last-child) td {
+  border-bottom: 1.5px solid whitesmoke; /* Añade un borde inferior a todas las filas excepto la última */
+}

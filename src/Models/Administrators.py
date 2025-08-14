@@ -48,3 +48,10 @@ class Administrators(User):
         db = Model(query, self.__data, 0)
         result = db.command()
         return result[0]
+    
+    def consultTable(self):
+        query = "SELECT nombres, apellidoP, apellidoM, telefono, correo, rol FROM Admins"
+
+        db = Model(query, "", 0)
+        result = db.command()
+        return result

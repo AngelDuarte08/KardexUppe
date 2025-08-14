@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Credencial Digital UPPE</title>
+    <title>Buscar Materias</title>
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/Start.css') }}"
+      href="{{ url_for('static', filename='css/Serch.css') }}"
     />
   </head>
   <body>
@@ -25,9 +25,7 @@
       <nav class="menu-lateral">
         <h2 class="menu-title">Menu</h2>
         <ul>
-          <li class="activo">
-            <a href="{{url_for('admins_bp.inicio')}}">Inicio</a>
-          </li>
+          <li><a href="{{url_for('admins_bp.inicio')}}">Inicio</a></li>
           <li>
             <a href="{{url_for('admins_bp.registerS')}}">Registar alumnos</a>
           </li>
@@ -43,7 +41,7 @@
           <li>
             <a href="{{url_for('admins_bp.serch_staf')}}">Buscar Empleado</a>
           </li>
-          <li>
+          <li class="activo">
             <a href="{{url_for('admins_bp.serch_subject')}}">Buscar Materia</a>
           </li>
           <li><a href="{{url_for('admins_bp.LogOut')}}">Cerrar sesión</a></li>
@@ -54,7 +52,7 @@
         <div class="credencial-card">
           <div class="header">
             <div class="title">
-              <h1 class="profile-title">Credencial Escolar</h1>
+              <h1 class="profile-title">Buscar Materia</h1>
               <img
                 src="{{ url_for('static', filename='Image/Correcaminos_azul.png') }}"
                 alt="logo"
@@ -65,20 +63,27 @@
           </div>
 
           <div class="profile">
-            <div class="lFoto">
-              <img
-                src="{{ url_for('static', filename='Image/Foto_de_perfil.png') }}"
-                alt="Foto del alumno"
-                class="foto"
-              />
-            </div>
-            <div class="info">
-              <h2>Bienvenido</h2>
-              <h3>{{nombre}} {{apellidoP}} {{apellidoM}}</h3>
-              <p><strong>Telefono:</strong> {{tel}}</p>
-              <p><strong>Rol:</strong> {{rol}}</p>
-              <p><strong>Correo:</strong> {{correo}}</p>
-            </div>
+            <div class="info"></div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Codigo</th>
+                  <th>Creditos</th>
+                  <th>Horas</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for fila in datos %}
+                <tr>
+                  <td>{{ fila['nombre'] }}</td>
+                  <td>{{ fila['codigo'] or 'No encontrado' }}</td>
+                  <td>{{ fila['credito'] }}</td>
+                  <td>{{ fila['horas'] }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
           </div>
         </div>
       </section>

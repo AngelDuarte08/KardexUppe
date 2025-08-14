@@ -61,3 +61,10 @@ class Student(User):
         db = Model(query, matriculas, 0)
         result = db.command()
         return result
+    
+    def consultTable(self):
+        query = "SELECT nombres, apellidoP, apellidoM, telefono, correo, matricula, cuatrimestre, grupo, carrera FROM Alumnos"
+
+        db = Model(query, "", 0)
+        result = db.command()
+        return result

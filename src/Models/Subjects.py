@@ -21,3 +21,10 @@ class Subject():
         db = Model(query, data, 0)
         result = db.command()
         return result[0][0]
+    
+    def consultTable(self):
+        query = "SELECT nombreMateria, codigoCurso, numeroCreditos, numeroHoras FROM Materias"
+
+        db = Model(query, "", 0)
+        result = db.command()
+        return result

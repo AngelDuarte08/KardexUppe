@@ -12,6 +12,9 @@ from Models.Subjects import Subject
 #Sql
 from mysql.connector import Error
 
+#Para datos decimales
+from decimal import Decimal
+
 #Admins
 admins_bp = Blueprint('admins_bp', __name__, url_prefix='/administrador' )
 
@@ -184,5 +187,72 @@ def insert_subject():
     finally:
         kind = "Exitoso"
         message = "Usuario registrado correctamente"
+
+        return render_template("Warning/MessageSubjects.html", tipo=kind, Mensage=message)
+    
+@admins_bp.route("/Buscar_alumno")
+def serch_student():
+    try: 
+        student = Student()
+        table = student.consultTable()
+
+        fields = ['nombre', 'apellidoPaterno', 'apellidoMaterno', 'telefono', 'correo', 'matricula', 'cuatrimestre', 'grupo', 'carrera']
+        dictinaryList =[
+            dict(zip(fields, fila))
+            for fila in table
+            ]
+        
+
+        return render_template('Admins/SerchStudent.html',
+                               datos=dictinaryList)
+    except Error as e:
+        kind = "Error"
+        message = f"Error al invocar register(): {e}"
+
+        return render_template("Warning/MessageSubjects.html", tipo=kind, Mensage=message)
+    
+@admins_bp.route("/Buscar_materia")
+def serch_subject():
+    try: 
+        subject = Subject()
+        table = subject.consultTable()
+        print("tabla: ",table)
+
+        dictinaryList = [
+            {
+                'nombre': fila[0],
+                'codigo': fila[1],
+                'credito': float(fila[2]) if isinstance(fila[2], Decimal) else fila[2],
+                'horas': fila[3]
+            }
+            for fila in table
+        ]
+        print("Lista de diccionarios",dictinaryList)
+
+        return render_template('Admins/SerchSubject.html',
+                               datos=dictinaryList)
+    except Error as e:
+        kind = "Error"
+        message = f"Error al invocar register(): {e}"
+
+        return render_template("Warning/MessageSubjects.html", tipo=kind, Mensage=message)
+
+@admins_bp.route("/Buscar_empleado")
+def serch_staf():
+    try: 
+        admin = Administrators()
+        table = admin.consultTable()
+
+        fields = ['nombre', 'apellidoPaterno', 'apellidoMaterno', 'telefono', 'correo', 'rol']
+        dictinaryList =[
+            dict(zip(fields, fila))
+            for fila in table
+            ]
+
+        return render_template('Admins/SerchStaf.html',
+                               datos=dictinaryList)
+    except Error as e:
+        kind = "Error"
+        message = f"Error al invocar register(): {e}"
 
         return render_template("Warning/MessageSubjects.html", tipo=kind, Mensage=message)

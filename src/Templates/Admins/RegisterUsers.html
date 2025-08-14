@@ -26,11 +26,24 @@
         <h2 class="menu-title">Menu</h2>
         <ul>
           <li><a href="{{url_for('admins_bp.inicio')}}">Inicio</a></li>
-          <li><a href="{{url_for('admins_bp.registerS')}}">Registar alumnos</a></li>
-          <li class="activo">
-            <a href="">Registar empleados</a>
+          <li>
+            <a href="{{url_for('admins_bp.registerS')}}">Registar alumnos</a>
           </li>
-          <li><a href="{{url_for('admins_bp.registerM')}}">Registar materias</a></li>
+          <li class="activo">
+            <a href="{{url_for('admins_bp.registerU')}}">Registar empleados</a>
+          </li>
+          <li>
+            <a href="{{url_for('admins_bp.registerM')}}">Registar materias</a>
+          </li>
+          <li>
+            <a href="{{url_for('admins_bp.serch_student')}}">Buscar alumno</a>
+          </li>
+          <li>
+            <a href="{{url_for('admins_bp.serch_staf')}}">Buscar Empleado</a>
+          </li>
+          <li>
+            <a href="{{url_for('admins_bp.serch_subject')}}">Buscar Materia</a>
+          </li>
           <li><a href="{{url_for('admins_bp.LogOut')}}">Cerrar sesión</a></li>
         </ul>
       </nav>
