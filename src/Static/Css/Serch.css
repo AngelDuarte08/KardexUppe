@@ -203,3 +203,119 @@ tbody td:last-child{
 tbody tr:not(:last-child) td {
   border-bottom: 1.5px solid whitesmoke; /* Añade un borde inferior a todas las filas excepto la última */
 }
+/* input with btn */
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    height: 45px;
+    border-radius: 20px;
+    background-color: transparent; /* opcional, el input tiene fondo blanco */
+    padding: 5px;
+    box-sizing: content-box;
+    gap: 10px;
+    margin-bottom: 12px;
+    margin-top: 0;
+}
+
+.input {
+    flex: none;
+    height: 100%;
+    width: 300px;
+    padding-left: 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: white;  
+    color: #151e2d;            
+    font-family: 'Rubik', sans-serif;
+    font-size: 15px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.input::placeholder {
+    color: #888; /* placeholder un poco gris */
+}
+
+.input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+    -webkit-text-fill-color: #151e2d;
+}
+
+.btnGenerate {
+    height: 100%;
+    width: 160px;
+    border: none;
+    border-radius: 15px;
+    background-color: #151e2d;  /* botón azul oscuro */
+    color: white;               /* texto blanco */
+    font-weight: 400;
+    cursor: pointer;
+    font-family: 'Rubik', sans-serif;
+    font-size: 1rem;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    transition: background-color 0.3s, transform 0.15s;
+}
+
+.btnGenerate:hover {
+    background-color: #1f2a40; /* un azul un poco más claro para hover */
+}
+
+.btnGenerate:active {
+    transform: scale(0.95);
+}
+
+label {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    color: #151e2d;
+    margin-right: 10px;
+    display: inline-block;
+    margin-bottom: 7px;
+}
+
+select {
+    height: 42px;
+    padding: 0 16px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background: #fff;
+    color: #151e2d;
+    font-family: 'Rubik', sans-serif;
+    font-size: 15px;
+    transition: border 0.23s, box-shadow 0.23s;
+    outline: none;
+    appearance: none; /* quita la flecha predeterminada en la mayoría de navegadores */
+    box-shadow: 0 2px 8px rgba(20, 59, 107, 0.04);
+    min-width: 140px;
+}
+
+select:focus {
+    border-color: #151e2d;
+    box-shadow: 0 0 0 2px #c2d3ee;
+}
+.info {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #f8f9fa;  /* Fondo claro tipo tarjeta */
+  border: 1px solid #dee2e6;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow-x: auto;
+}
+.error-message {
+  color: #c0392b;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  padding: 10px 15px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  text-align: center;
+  font-weight: bold;
+}

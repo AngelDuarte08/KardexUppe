@@ -1,5 +1,5 @@
 #Flask
-from flask import Blueprint, render_template, session, redirect, url_for, request
+from flask import Blueprint, render_template, session, redirect, url_for, request, flash
 
 #JSON
 import json
@@ -256,3 +256,31 @@ def serch_staf():
         message = f"Error al invocar register(): {e}"
 
         return render_template("Warning/MessageSubjects.html", tipo=kind, Mensage=message)
+    
+@admins_bp.route("/Buscar_un_empleado", methods=["POST"])
+def serch_one_staf():
+    email = request.form["email"]
+
+    if not email:
+        return redirect(url_for("admins_bp.serch_staf"))
+    else:
+        try: 
+            admin = Administrators()
+            table = admin.consultOne(email)
+            fields = ['nombre', 'apellidoPaterno', 'apellidoMaterno', 'telefono', 'correo', 'rol']
+            dictinaryList =[
+                dict(zip(fields, fila))
+                for fila in table
+                ]
+
+            if table:
+                return render_template('Admins/SerchStaf.html',
+                               datos=dictinaryList)
+            else:
+                flash("Empleado no encontrado", "error-message")
+                return redirect(url_for("admins_bp.serch_staf"))
+
+        except Exception as e:
+            flash(f"Ocurrió un error: {str(e)}", "error-message")
+            return redirect(url_for("admins_bp.serch_staf"))
+    

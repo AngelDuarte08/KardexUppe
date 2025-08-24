@@ -55,3 +55,11 @@ class Administrators(User):
         db = Model(query, "", 0)
         result = db.command()
         return result
+    
+    def consultOne(self, email):
+        self.__data = [email]
+        query = "SELECT nombres, apellidoP, apellidoM, telefono, correo, rol FROM Admins WHERE correo = %s"
+
+        db = Model(query, self.__data, 0)
+        result = db.command()
+        return result
