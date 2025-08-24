@@ -63,8 +63,17 @@ class Student(User):
         return result
     
     def consultTable(self):
-        query = "SELECT nombres, apellidoP, apellidoM, telefono, correo, matricula, cuatrimestre, grupo, carrera FROM Alumnos"
+        query = "SELECT nombres, apellidoP, apellidoM, telefono, correo, matricula, cuatrimestre, grupo, carrera FROM Alumnos;"
 
         db = Model(query, "", 0)
         result = db.command()
+        return result
+    
+    def consultOne(self, matricula):
+        self.__data = [matricula]
+        query = "SELECT nombres, apellidoP, apellidoM, telefono, correo, matricula, cuatrimestre, grupo, carrera FROM Alumnos WHERE matricula = %s;"
+
+        db = Model(query, self.__data, 0)
+        result = db.command()
+        print(result)
         return result

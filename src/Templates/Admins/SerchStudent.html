@@ -63,36 +63,60 @@
           </div>
 
           <div class="profile">
-            <div class="info"></div>
-            <table>
-              <thead>
-                <tr>
-                  <th>Nombre</th>
-                  <th>Telefono</th>
-                  <th>Correo</th>
-                  <th>Matricula</th>
-                  <th>Carrera</th>
-                  <th>Cuatrimestre</th>
-                  <th>Grupo</th>
-                </tr>
-              </thead>
-              <tbody>
-                {% for fila in datos %}
-                <tr>
-                  <td>
-                    {{ fila['nombre'] }} {{ fila['apellidoPaterno'] }} {{
-                    fila['apellidoMaterno']}}
-                  </td>
-                  <td>{{ fila['telefono'] or 'No encontrado' }}</td>
-                  <td>{{ fila['correo'] }}</td>
-                  <td>{{ fila['matricula'] }}</td>
-                  <td>{{ fila['carrera'] }}</td>
-                  <td>{{ fila['cuatrimestre'] }}</td>
-                  <td>{{ fila['grupo'] }}</td>
-                </tr>
-                {% endfor %}
-              </tbody>
-            </table>
+            <div class="info">
+              <form
+                action="{{ url_for('admins_bp.serch_one_student') }}"
+                method="POST"
+              >
+                <div class="input-wrapper">
+                  <input
+                    placeholder="Ingresa el correo"
+                    class="input"
+                    name="matricula"
+                    type="text"
+                    id="matricula"
+                  />
+                  <button class="btnGenerate" type="submit">Buscar</button>
+                </div>
+              </form>
+              {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %} {% for tipo, mensaje in messages %}
+              <div class="{{ tipo }}">{{ mensaje }}</div>
+              {% endfor %} {% endif %} {% endwith %}
+              <table>
+                <thead>
+                  <tr>
+                    <th>Nombre</th>
+                    <th>Telefono</th>
+                    <th>Correo</th>
+                    <th>Matricula</th>
+                    <th>Carrera</th>
+                    <th>Cuatrimestre</th>
+                    <th>Grupo</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% if datos %} {% for fila in datos %}
+                  <tr>
+                    <td>
+                      {{ fila['nombre'] }} {{ fila['apellidoPaterno'] }} {{
+                      fila['apellidoMaterno'] }}
+                    </td>
+                    <td>{{ fila['telefono'] or 'No encontrado' }}</td>
+                    <td>{{ fila['correo'] }}</td>
+                    <td>{{ fila['matricula'] }}</td>
+                    <td>{{ fila['carrera'] }}</td>
+                    <td>{{ fila['cuatrimestre'] }}</td>
+                    <td>{{ fila['grupo'] }}</td>
+                  </tr>
+                  {% endfor %} {% else %}
+                  <tr>
+                    <td colspan="4">No se encontraron empleados</td>
+                  </tr>
+                  {% endif %}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </section>

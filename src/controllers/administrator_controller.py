@@ -283,4 +283,31 @@ def serch_one_staf():
         except Exception as e:
             flash(f"Ocurrió un error: {str(e)}", "error-message")
             return redirect(url_for("admins_bp.serch_staf"))
-    
+        
+@admins_bp.route("/Buscar_un_alumno", methods=["POST"])
+def serch_one_student():
+    matricula = request.form["matricula"]
+    print(matricula)
+
+    if not matricula:
+        return redirect(url_for("admins_bp.serch_student"))
+    else:
+        try: 
+            student = Student()
+            table = student.consultOne(matricula)
+            fields = ['nombre', 'apellidoPaterno', 'apellidoMaterno', 'telefono', 'correo', 'matricula', 'cuatrimestre', 'grupo', 'carrera']
+            dictinaryList =[
+                dict(zip(fields, fila))
+                for fila in table
+                ]
+
+            if table:
+                return render_template('Admins/SerchStudent.html',
+                               datos=dictinaryList)
+            else:
+                flash("Alumno no encontrado", "error-message")
+                return redirect(url_for("admins_bp.serch_student"))
+
+        except Exception as e:
+            flash(f"Ocurrió un error: {str(e)}", "error-message")
+            return redirect(url_for("admins_bp.serch_student"))
