@@ -63,27 +63,51 @@
           </div>
 
           <div class="profile">
-            <div class="info"></div>
-            <table>
-              <thead>
-                <tr>
-                  <th>Nombre</th>
-                  <th>Codigo</th>
-                  <th>Creditos</th>
-                  <th>Horas</th>
-                </tr>
-              </thead>
-              <tbody>
-                {% for fila in datos %}
-                <tr>
-                  <td>{{ fila['nombre'] }}</td>
-                  <td>{{ fila['codigo'] or 'No encontrado' }}</td>
-                  <td>{{ fila['credito'] }}</td>
-                  <td>{{ fila['horas'] }}</td>
-                </tr>
-                {% endfor %}
-              </tbody>
-            </table>
+            <div class="info">
+              <form
+                action="{{ url_for('admins_bp.serch_one_subject') }}"
+                method="POST"
+              >
+                <div class="input-wrapper">
+                  <input
+                    placeholder="Ingresa el correo"
+                    class="input"
+                    name="code"
+                    type="text"
+                    id="code"
+                  />
+                  <button class="btnGenerate" type="submit">Buscar</button>
+                </div>
+              </form>
+              {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %} {% for tipo, mensaje in messages %}
+              <div class="{{ tipo }}">{{ mensaje }}</div>
+              {% endfor %} {% endif %} {% endwith %}
+              <table>
+                <thead>
+                  <tr>
+                    <th>Nombre</th>
+                    <th>Codigo</th>
+                    <th>Creditos</th>
+                    <th>Horas</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% if datos %} {% for fila in datos %}
+                  <tr>
+                    <td>{{ fila['nombre'] }}</td>
+                    <td>{{ fila['codigo'] or 'No encontrado' }}</td>
+                    <td>{{ fila['credito'] }}</td>
+                    <td>{{ fila['horas'] }}</td>
+                  </tr>
+                  {% endfor %} {% else %}
+                  <tr>
+                    <td colspan="4">No se encontraron empleados</td>
+                  </tr>
+                  {% endif %}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </section>

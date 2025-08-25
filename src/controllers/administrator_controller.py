@@ -216,7 +216,6 @@ def serch_subject():
     try: 
         subject = Subject()
         table = subject.consultTable()
-        print("tabla: ",table)
 
         dictinaryList = [
             {
@@ -227,7 +226,6 @@ def serch_subject():
             }
             for fila in table
         ]
-        print("Lista de diccionarios",dictinaryList)
 
         return render_template('Admins/SerchSubject.html',
                                datos=dictinaryList)
@@ -287,7 +285,6 @@ def serch_one_staf():
 @admins_bp.route("/Buscar_un_alumno", methods=["POST"])
 def serch_one_student():
     matricula = request.form["matricula"]
-    print(matricula)
 
     if not matricula:
         return redirect(url_for("admins_bp.serch_student"))
@@ -311,3 +308,36 @@ def serch_one_student():
         except Exception as e:
             flash(f"Ocurrió un error: {str(e)}", "error-message")
             return redirect(url_for("admins_bp.serch_student"))
+        
+
+@admins_bp.route("/Buscar_una_materia", methods=["POST"])
+def serch_one_subject():
+    code = request.form["code"]
+
+    if not code:
+        return redirect(url_for("admins_bp.serch_subject"))
+    else:
+        try: 
+            subject = Subject()
+            table = subject.consultOne(code)
+
+            dictinaryList = [
+                {
+                    'nombre': fila[0],
+                    'codigo': fila[1],
+                    'credito': float(fila[2]) if isinstance(fila[2], Decimal) else fila[2],
+                    'horas': fila[3]
+                }
+                for fila in table
+            ]
+
+            if table:
+                return render_template('Admins/SerchSubject.html',
+                                datos=dictinaryList)
+            else:
+                flash("Materia no encontrado", "error-message")
+                return redirect(url_for("admins_bp.serch_subject"))
+
+        except Exception as e:
+            flash(f"Ocurrió un error: {str(e)}", "error-message")
+            return redirect(url_for("admins_bp.serch_subject"))
